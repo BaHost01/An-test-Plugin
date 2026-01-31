@@ -1,0 +1,154 @@
+cursed-energy:
+  max: 100.0
+  regen-per-second: 5.0
+  starting-technique: initiate
+  particle-throttle-ms: 150
+
+targeting:
+  entity-range: 5.0
+  location-range: 12.0
+
+abilities:
+  cursed_dash:
+    name: "Cursed Dash"
+    cost: 15.0
+    cooldown-ms: 3500
+    distance: 6.0
+    velocity-cap: 1.5
+  impact_strike:
+    name: "Impact Strike"
+    cost: 20.0
+    cooldown-ms: 5000
+    range: 3.5
+    bonus-damage: 4.0
+    knockback: 0.8
+    debuff-duration-seconds: 3
+  energy_burst:
+    name: "Energy Burst"
+    cost: 30.0
+    cooldown-ms: 8000
+    radius: 4.5
+    damage: 3.0
+    knockback: 0.6
+    debuff-duration-seconds: 2
+  binding_snap:
+    name: "Binding Snap"
+    cost: 25.0
+    cooldown-ms: 9000
+    range: 5.0
+    pull-strength: 0.3
+    stun-duration-seconds: 2
+  barrier_zone:
+    name: "Barrier Zone"
+    cost: 35.0
+    cooldown-ms: 12000
+    radius: 5.0
+    duration-seconds: 6
+    tick-interval: 10
+    debuff-duration-seconds: 3
+
+techniques:
+  initiate:
+    name: "Initiate Technique"
+    abilities:
+      - cursed_dash
+      - impact_strike
+  sentinel:
+    name: "Sentinel Technique"
+    abilities:
+      - barrier_zone
+      - binding_snap
+  disruptor:
+    name: "Disruptor Technique"
+    abilities:
+      - energy_burst
+      - impact_strike
+      - cursed_dash
+
+vfx:
+  abilities:
+    cursed_dash:
+      cast:
+        enabled: true
+        particle:
+          type: "CLOUD"
+          count: 14
+          offset:
+            x: 0.2
+            y: 0.1
+            z: 0.2
+          extra: 0.02
+        sound:
+          type: "ENTITY_ENDERMAN_TELEPORT"
+          volume: 0.6
+          pitch: 1.2
+    impact_strike:
+      hit:
+        enabled: true
+        particle:
+          type: "CRIT"
+          count: 12
+          offset:
+            x: 0.2
+            y: 0.3
+            z: 0.2
+          extra: 0.1
+        sound:
+          type: "ENTITY_PLAYER_ATTACK_STRONG"
+          volume: 0.8
+          pitch: 1.0
+    barrier_zone:
+      cast:
+        enabled: true
+        particle:
+          type: "ENCHANT"
+          count: 18
+          offset:
+            x: 0.4
+            y: 0.4
+            z: 0.4
+          extra: 0.01
+        sound:
+          type: "BLOCK_BEACON_ACTIVATE"
+          volume: 0.6
+          pitch: 1.1
+      tick:
+        enabled: true
+        particle:
+          type: "ENCHANT"
+          count: 14
+          offset:
+            x: 0.5
+            y: 0.4
+            z: 0.5
+          extra: 0.01
+    energy_burst:
+      cast:
+        enabled: true
+        particle:
+          type: "EXPLOSION"
+          count: 6
+          offset:
+            x: 0.4
+            y: 0.2
+            z: 0.4
+          extra: 0.02
+        sound:
+          type: "ENTITY_GENERIC_EXPLODE"
+          volume: 0.7
+          pitch: 1.2
+    binding_snap:
+      hit:
+        enabled: true
+        particle:
+          type: "SPELL_WITCH"
+          count: 16
+          offset:
+            x: 0.3
+            y: 0.4
+            z: 0.3
+          extra: 0.01
+        sound:
+          type: "ENTITY_ENDERMAN_HURT"
+          volume: 0.6
+          pitch: 0.9
